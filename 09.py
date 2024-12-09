@@ -25,11 +25,6 @@ for right_index in reversed(range(len(disc_space))):
 
 result = sum([i * value for i, value in enumerate(disc_space) if value is not None])
 print(result)
-for value in disc_space:
-    if value is None:
-        print(".", end="")
-    else:
-        print(value, end="")
 
 
 # Part 2
