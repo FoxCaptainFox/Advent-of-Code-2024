@@ -1,10 +1,10 @@
-from collections import Counter
 from functools import cache
 from itertools import combinations
 from utils import read_data
 
 
 # Shared logic
+
 @cache
 def get_connected_computers(computer, all_connections):
     result = []
