@@ -24,6 +24,7 @@ for line in data[separator_index  + 1: ]:
 
 
 # Part 1
+
 gate_values = initial_gate_values.copy()
 queue = gate_operations[:]
 while len(queue) > 0:
