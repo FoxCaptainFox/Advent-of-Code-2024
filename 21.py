@@ -88,16 +88,17 @@ def get_directions_from_a_to_b(a, b, keyboard):
     i_change, j_change = b[0] - a[0], b[1] - a[1]
     i_directions = DIRECTION_CHARS[(copysign(1, i_change), 0)] * abs(i_change)
     j_directions = DIRECTION_CHARS[(0, copysign(1, j_change))] * abs(j_change)
-    i_first_directions = i_directions + j_directions + "A"
-    j_first_directions = j_directions + i_directions + "A"
-    if keyboard[a[0] + i_change][a[1]] is None:
-        return j_first_directions
-    if keyboard[a[0]][a[1] + j_change] is None:
-        return i_first_directions
-    # Magic
+
+    if keyboard[b[0]][a[1]] is None:
+        return j_directions + i_directions + "A"
+    if keyboard[a[0]][b[1]] is None:
+        return i_directions + j_directions + "A"
+    
+    # Prioritize left movement, then vertical, then right
+    # Found heuristically that farther movement buttons should be pressed first
     if j_change < 0:
-        return j_first_directions
-    return i_first_directions
+        return j_directions + i_directions + "A"
+    return i_directions + j_directions + "A"
 
 
 DIRECTIONAL_KEYBOARDS_NUMBER = 25
